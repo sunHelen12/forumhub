@@ -24,13 +24,12 @@ CREATE TABLE topicos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
     mensagem TEXT NOT NULL,
-    dataCriacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    dataCriacao DATETIME NOT NULL,
     status VARCHAR(255) NOT NULL,
     autor INT,
-    curso INT,
-    respostas INT,
-    FOREIGN KEY (usuarios_id) REFERENCES usuarios(id) ON DELETE CASCADE,
-    FOREIGN KEY (cursos_id) REFERENCES cursos(id) ON DELETE SET NULL
+    curso INT,    
+    FOREIGN KEY (autor) REFERENCES autores(id) ON DELETE CASCADE,
+    FOREIGN KEY (curso) REFERENCES cursos(id) ON DELETE SET NULL
 );
 
 CREATE TABLE respostas (
@@ -40,7 +39,7 @@ CREATE TABLE respostas (
     dataCriacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     autor INT,
     solucao VARCHAR(255) NOT NULL,
-    FOREIGN KEY (topicos_id) REFERENCES topicos(id) ON DELETE CASCADE,
-    FOREIGN KEY (autores_id) REFERENCES usuarios(id) ON DELETE CASCADE
+    FOREIGN KEY (topico) REFERENCES topicos(id) ON DELETE CASCADE,
+    FOREIGN KEY (autor) REFERENCES autores(id) ON DELETE CASCADE
 );
 
