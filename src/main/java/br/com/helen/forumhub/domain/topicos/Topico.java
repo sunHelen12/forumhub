@@ -42,7 +42,7 @@ public class Topico {
     private String titulo;
     private String mensagem;
     @Column(name = "dataCriacao", nullable = false)
-    private LocalDateTime data_criacao;
+    private LocalDateTime dataCriacao;
     @Enumerated(EnumType.STRING)
     private Status status;
     @ManyToOne
@@ -58,7 +58,7 @@ public class Topico {
     public Topico(DadosCadastrarTopicos dados) {
        this.titulo = dados.titulo();
        this.mensagem = dados.mensagem();
-       this.data_criacao = dados.dataCriacao();
+       this.dataCriacao = dados.dataCriacao()!= null ? dados.dataCriacao() : LocalDateTime.now();;
        this.autor = dados.autor();
        this.curso = dados.curso();
        this.respostas = new ArrayList<>();

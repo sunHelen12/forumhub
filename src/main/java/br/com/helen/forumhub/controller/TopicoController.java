@@ -10,6 +10,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.helen.forumhub.domain.topicos.Topico;
 import br.com.helen.forumhub.domain.topicos.record.DadosCadastrarTopicos;
+import br.com.helen.forumhub.domain.topicos.record.DadosDetalhamentoTopico;
 import br.com.helen.forumhub.repository.ITopicoRepository;
 import jakarta.transaction.Transactional;
 

@@ -10,7 +10,7 @@ import jakarta.validation.constraints.NotNull;
 
 public record DadosCadastrarTopicos(@NotBlank String titulo,
                                     @NotNull Autor autor,
-                                    LocalDateTime data_criacao,
+                                    LocalDateTime dataCriacao,
                                     @NotBlank String mensagem,
                                     @NotNull Status status,
                                     @NotNull Curso curso) {
