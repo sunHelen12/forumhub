@@ -10,24 +10,21 @@ CREATE TABLE cursos (
     categoria VARCHAR(50) NOT NULL
 );
 
-
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
-    senha VARCHAR(255) NOT NULL,
-   
+    senha VARCHAR(255) NOT NULL
 );
-
 
 CREATE TABLE topicos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
     mensagem TEXT NOT NULL,
-    dataCriacao DATETIME NOT NULL,
+    dataCriacao DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,  
     status VARCHAR(255) NOT NULL,
-    autor INT,
-    curso INT,    
+    autor BIGINT,  
+    curso INT,
     FOREIGN KEY (autor) REFERENCES autores(id) ON DELETE CASCADE,
     FOREIGN KEY (curso) REFERENCES cursos(id) ON DELETE SET NULL
 );
@@ -36,10 +33,9 @@ CREATE TABLE respostas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     mensagem TEXT NOT NULL,
     topico INT,
-    dataCriacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    autor INT,
+    dataCriacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+    autor BIGINT,  
     solucao VARCHAR(255) NOT NULL,
     FOREIGN KEY (topico) REFERENCES topicos(id) ON DELETE CASCADE,
     FOREIGN KEY (autor) REFERENCES autores(id) ON DELETE CASCADE
 );
-
