@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.helen.forumhub.domain.topicos.Topico;
 
-public interface ITopicosRepository extends JpaRepository<Topico, Long>{
+public interface ITopicoRepository extends JpaRepository<Topico, Long>{
     
 }
