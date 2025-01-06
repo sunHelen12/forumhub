@@ -4,6 +4,11 @@ CREATE TABLE cursos (
     categoria VARCHAR(50) NOT NULL
 );
 
+CREATE TABLE perfis (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL
+);
+
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
