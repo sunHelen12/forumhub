@@ -57,7 +57,8 @@ public class Topico {
     public Topico(DadosCadastrarTopicos dados) {
        this.titulo = dados.titulo();
        this.mensagem = dados.mensagem();
-       this.dataCriacao = dados.dataCriacao()!= null ? dados.dataCriacao() : LocalDateTime.now();;
+       this.dataCriacao = dados.dataCriacao()!= null ? dados.dataCriacao() : LocalDateTime.now();
+       this.status = dados.status();
        this.autor = dados.autor();
        this.curso = dados.curso();
        this.respostas = new ArrayList<>();

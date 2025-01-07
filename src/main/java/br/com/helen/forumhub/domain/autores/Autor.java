@@ -1,6 +1,6 @@
 package br.com.helen.forumhub.domain.autores;
 
-import br.com.helen.forumhub.domain.autores.record.DadosAutor;
+import br.com.helen.forumhub.domain.autores.record.DadosCadastrarAutor;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,11 +19,11 @@ public class Autor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
+    private String user;
     private String email;
 
-    public Autor(DadosAutor dados){
-        this.nome = dados.nome();
+    public Autor (DadosCadastrarAutor dados){
+        this.user = dados.user();
         this.email = dados.email();
     }
 }
