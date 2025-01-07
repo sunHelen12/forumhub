@@ -13,6 +13,7 @@ import br.com.helen.forumhub.domain.topicos.record.DadosCadastrarTopicos;
 import br.com.helen.forumhub.domain.topicos.record.DadosDetalhamentoTopico;
 import br.com.helen.forumhub.repository.ITopicoRepository;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("topicos")
@@ -23,7 +24,7 @@ public class TopicoController {
     
     @PostMapping
     @Transactional
-    public ResponseEntity cadastrarTopico(@RequestBody DadosCadastrarTopicos dados, UriComponentsBuilder uBuilder){
+    public ResponseEntity cadastrarTopico(@RequestBody @Valid DadosCadastrarTopicos dados, UriComponentsBuilder uBuilder){
         var topicos = new Topico(dados); 
         repository.save(topicos);
 

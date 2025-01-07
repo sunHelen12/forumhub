@@ -40,14 +40,14 @@ public class Topico {
     private Long id;
     private String titulo;
     private String mensagem;
-    @Column(name = "dataCriacao", nullable = false)
+    @Column(name = "data_criacao", nullable = false)
     private LocalDateTime dataCriacao;
     @Enumerated(EnumType.STRING)
     private Status status;
     @ManyToOne
     @JoinColumn(name = "autor", nullable = false)
     private Autor autor;
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "curso", nullable = false)
     private Curso curso;
 

@@ -18,7 +18,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Table(name = "respostas")
-@Entity(name = "Reposta")
+@Entity(name = "Resposta")
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,7 +31,7 @@ public class Resposta {
     @ManyToOne
     @JoinColumn(name = "topicos", nullable = false)
     private Topico topico;
-    @Column(name = "dataCriacao", nullable = false)
+    @Column(name = "data_criacao", nullable = false)
     private LocalDateTime dataCriacao;
     @ManyToOne
     @JoinColumn(name = "autor", nullable = false)
