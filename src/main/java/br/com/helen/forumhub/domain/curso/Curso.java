@@ -1,5 +1,6 @@
 package br.com.helen.forumhub.domain.curso;
 
+import br.com.helen.forumhub.domain.curso.record.DadosCurso;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,5 +24,9 @@ public class Curso {
     private String nome;
     private String categoria;
 
+    public Curso(DadosCurso dados){
+        this.nome = dados.nome();
+        this.categoria = dados.categoria();
+    }
     
 }
