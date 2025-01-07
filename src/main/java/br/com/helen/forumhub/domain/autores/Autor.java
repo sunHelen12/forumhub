@@ -1,5 +1,6 @@
 package br.com.helen.forumhub.domain.autores;
 
+import br.com.helen.forumhub.domain.autores.record.DadosAutor;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,4 +21,9 @@ public class Autor {
     private Long id;
     private String nome;
     private String email;
+
+    public Autor(DadosAutor dados){
+        this.nome = dados.nome();
+        this.email = dados.email();
+    }
 }

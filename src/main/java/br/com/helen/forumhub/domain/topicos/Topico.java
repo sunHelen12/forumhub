@@ -1,6 +1,5 @@
 package br.com.helen.forumhub.domain.topicos;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
