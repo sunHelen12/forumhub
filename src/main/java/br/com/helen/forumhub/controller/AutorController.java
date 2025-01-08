@@ -23,22 +23,18 @@ import jakarta.validation.Valid;
 @RequestMapping("autores")
 public class AutorController {
     @Autowired
-    private IAutorRepository repository;
+    private IAutorRepository autorRepository;
 
     @PostMapping
     @Transactional
      public ResponseEntity cadastrarAutor(@RequestBody @Valid DadosCadastrarAutor dados, UriComponentsBuilder uBuilder){
         var autor = new Autor(dados); 
-        repository.save(autor);
+        autorRepository.save(autor);
 
         var uri = uBuilder.path("/autores/{id}").buildAndExpand(autor.getId()).toUri();
         return ResponseEntity.created(uri).body(new DadosDetalhamentoAutor(autor));
-
     }
 
-    @GetMapping
-    public ResponseEntity <Page<DadosDetalhamentoAutor>>listarAutores(@PageableDefault(size = 10, sort = {"user"})Pageable paginacao){
-        var page = repository.findAll(paginacao).map(DadosDetalhamentoAutor::new);
-        return ResponseEntity.ok(page);
-    }
+    
+
 }

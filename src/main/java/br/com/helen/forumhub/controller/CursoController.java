@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import br.com.helen.forumhub.domain.autores.record.DadosDetalhamentoAutor;
 import br.com.helen.forumhub.domain.curso.Curso;
 import br.com.helen.forumhub.domain.curso.record.DadosCadastrarCurso;
 import br.com.helen.forumhub.domain.curso.record.DadosDetalhamentoCurso;
