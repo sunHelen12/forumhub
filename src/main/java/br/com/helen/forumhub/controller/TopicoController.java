@@ -52,10 +52,16 @@ public class TopicoController {
     @PutMapping
     @Transactional
     public ResponseEntity atualizarTopico(@RequestBody @Valid DadosAtualizacaoTopicos dados){
-        var topico = topicoRepository.getReferenceById(dados.id());
+        var topicoOptional = topicoRepository.findById(dados.id());
+    
+        if (!topicoOptional.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        var topico = topicoOptional.get(); 
         topico.atualizarInformacoes(dados);
         return ResponseEntity.ok(new DadosDetalhamentoTopico(topico));
-    }
+    }    
     //detalhar topico por id
     @GetMapping("/{id}")
     public ResponseEntity detalharTopico(@PathVariable Long id){
@@ -67,9 +73,11 @@ public class TopicoController {
     @Transactional
     public ResponseEntity excluirCurso(@PathVariable Long id){
 
-        if (!topicoRepository.existsById(id)) {
+        var topicoOptional = topicoRepository.findById(id);
+        
+        if (!topicoOptional.isPresent()) {
             return ResponseEntity.notFound().build();
-        }
+        }        
         
         topicoRepository.deleteById(id);
         return ResponseEntity.noContent().build();

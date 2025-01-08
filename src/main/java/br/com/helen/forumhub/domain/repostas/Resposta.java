@@ -3,6 +3,7 @@ package br.com.helen.forumhub.domain.repostas;
 import java.time.LocalDateTime;
 
 import br.com.helen.forumhub.domain.autores.Autor;
+import br.com.helen.forumhub.domain.repostas.record.DadosCadastrarRespostas;
 import br.com.helen.forumhub.domain.topicos.Topico;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,6 +25,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @EqualsAndHashCode
 public class Resposta {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -36,4 +38,9 @@ public class Resposta {
     @ManyToOne
     @JoinColumn(name = "autor", nullable = false)
     private Autor autor;
+
+    public Resposta(DadosCadastrarRespostas dados) {
+        this.topico = dados.topico();
+        this.solucao = dados.solucao();
+    }
 }
