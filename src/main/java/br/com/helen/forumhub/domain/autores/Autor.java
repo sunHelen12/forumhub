@@ -26,4 +26,5 @@ public class Autor {
         this.user = dados.user();
         this.email = dados.email();
     }
+    
 }

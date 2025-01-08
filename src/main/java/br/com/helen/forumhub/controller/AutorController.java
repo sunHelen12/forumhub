@@ -1,8 +1,12 @@
 package br.com.helen.forumhub.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,5 +34,11 @@ public class AutorController {
         var uri = uBuilder.path("/autores/{id}").buildAndExpand(autor.getId()).toUri();
         return ResponseEntity.created(uri).body(new DadosDetalhamentoAutor(autor));
 
+    }
+
+    @GetMapping
+    public ResponseEntity <Page<DadosDetalhamentoAutor>>listarAutores(@PageableDefault(size = 10, sort = {"user"})Pageable paginacao){
+        var page = repository.findAll(paginacao).map(DadosDetalhamentoAutor::new);
+        return ResponseEntity.ok(page);
     }
 }
