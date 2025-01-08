@@ -27,9 +27,9 @@ public class Resposta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
+    private String solucao;
     @ManyToOne
-    @JoinColumn(name = "topicos", nullable = false)
+    @JoinColumn(name = "topico", nullable = false)
     private Topico topico;
     @Column(name = "data_criacao", nullable = false)
     private LocalDateTime dataCriacao;

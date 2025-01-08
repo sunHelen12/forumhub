@@ -5,6 +5,7 @@ CREATE TABLE respostas (
     dataCriacao DATETIME DEFAULT CURRENT_TIMESTAMP,
     autor BIGINT,  
     solucao VARCHAR(255) NOT NULL,
+    
     FOREIGN KEY (topico) REFERENCES topicos(id) ON DELETE CASCADE,
     FOREIGN KEY (autor) REFERENCES autores(id) ON DELETE CASCADE
 );

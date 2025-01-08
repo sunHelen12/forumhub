@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,7 +29,8 @@ public class TopicoController {
 
     @Autowired
     private ITopicoRepository topicoRepository;
-       
+    
+    //cadastrar topico
     @PostMapping
     @Transactional
     public ResponseEntity cadastrarTopico(@RequestBody @Valid DadosCadastrarTopicos dados, UriComponentsBuilder uBuilder){
@@ -40,13 +42,13 @@ public class TopicoController {
         return ResponseEntity.created(uri).body(new DadosDetalhamentoTopico(topicos));
 
     }
-
+    //listar topicos
     @GetMapping
     public ResponseEntity <Page<DadosDetalhamentoTopico>>listarAutores(@PageableDefault(size = 10, sort = {"id"})Pageable paginacao){
         var page = topicoRepository.findAll(paginacao).map(DadosDetalhamentoTopico::new);
         return ResponseEntity.ok(page);
     }
-
+    //atualizar topicos
     @PutMapping
     @Transactional
     public ResponseEntity atualizarTopico(@RequestBody @Valid DadosAtualizacaoTopicos dados){
@@ -54,10 +56,22 @@ public class TopicoController {
         topico.atualizarInformacoes(dados);
         return ResponseEntity.ok(new DadosDetalhamentoTopico(topico));
     }
-
+    //detalhar topico por id
     @GetMapping("/{id}")
     public ResponseEntity detalharTopico(@PathVariable Long id){
         var topico = topicoRepository.getReferenceById(id);
         return ResponseEntity.ok(new DadosDetalhamentoTopico(topico));
+    }
+    //excluir topico
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity excluirCurso(@PathVariable Long id){
+
+        if (!topicoRepository.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        
+        topicoRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }

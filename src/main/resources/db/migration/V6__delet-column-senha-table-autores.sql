@@ -1,1 +1,0 @@
-ALTER TABLE autores DROP COLUMN senha;
