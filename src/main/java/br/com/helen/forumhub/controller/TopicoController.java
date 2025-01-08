@@ -6,13 +6,16 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.helen.forumhub.domain.topicos.Topico;
+import br.com.helen.forumhub.domain.topicos.record.DadosAtualizacaoTopicos;
 import br.com.helen.forumhub.domain.topicos.record.DadosCadastrarTopicos;
 import br.com.helen.forumhub.domain.topicos.record.DadosDetalhamentoTopico;
 import br.com.helen.forumhub.repository.ITopicoRepository;
@@ -44,5 +47,17 @@ public class TopicoController {
         return ResponseEntity.ok(page);
     }
 
-    
+    @PutMapping
+    @Transactional
+    public ResponseEntity atualizarTopico(@RequestBody @Valid DadosAtualizacaoTopicos dados){
+        var topico = topicoRepository.getReferenceById(dados.id());
+        topico.atualizarInformacoes(dados);
+        return ResponseEntity.ok(new DadosDetalhamentoTopico(topico));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity detalharTopico(@PathVariable Long id){
+        var topico = topicoRepository.getReferenceById(id);
+        return ResponseEntity.ok(new DadosDetalhamentoTopico(topico));
+    }
 }
