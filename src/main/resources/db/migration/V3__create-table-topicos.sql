@@ -2,7 +2,7 @@ CREATE TABLE topicos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
     mensagem TEXT NOT NULL,
-    data_criacao DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,  
+    data_criacao DATETIME NULL DEFAULT CURRENT_TIMESTAMP,  
     status VARCHAR(255) NOT NULL,
     autor BIGINT,  
     curso INT,

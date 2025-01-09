@@ -2,7 +2,7 @@ CREATE TABLE respostas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     mensagem TEXT NULL,
     topico INT,
-    dataCriacao DATETIME DEFAULT NULL CURRENT_TIMESTAMP,
+    data_criacao DATETIME DEFAULT NULL CURRENT_TIMESTAMP,
     autor BIGINT,  
     solucao VARCHAR(255) NOT NULL,
     
