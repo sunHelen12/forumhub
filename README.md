@@ -10,7 +10,7 @@ Bem-vindo ao **Forum Hub**, um projeto desenvolvido como parte do **Desafio do P
 
 ## 💡 **Sobre o Projeto**
 
-O Forum Hub é uma plataforma web que permite a interação entre usuários sobre temas relacionados à tecnologia. Com funcionalidades CRUD (Create, Read, Update, Delete) completas, os usuários podem criar tópicos, gerenciar autores, cadastrar cursos e manter o conteúdo organizado e seguro. A autenticação e o controle de acesso garantem um ambiente protegido para todos os usuários.
+O Forum Hub é fórum que permite a interação entre usuários sobre temas relacionados à tecnologia. Com funcionalidades CRUD (Create, Read, Update, Delete) completas, os usuários podem criar tópicos, gerenciar autores, cadastrar cursos e manter o conteúdo organizado e seguro. A autenticação e o controle de acesso garantem um ambiente protegido para todos os usuários.
 
 ---
 
