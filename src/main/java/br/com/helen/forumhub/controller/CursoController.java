@@ -54,7 +54,7 @@ public class CursoController {
         return ResponseEntity.noContent().build();
     }
     //detalha curso por id
-     @GetMapping("/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity detalharTopico(@PathVariable Long id){
         var curso = cursoRepository.getReferenceById(id);
         return ResponseEntity.ok(new DadosDetalhamentoCurso(curso));
