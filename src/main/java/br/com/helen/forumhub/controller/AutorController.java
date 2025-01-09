@@ -15,10 +15,12 @@ import br.com.helen.forumhub.domain.autores.Autor;
 import br.com.helen.forumhub.domain.autores.record.DadosCadastrarAutor;
 import br.com.helen.forumhub.domain.autores.record.DadosDetalhamentoAutor;
 import br.com.helen.forumhub.repository.IAutorRepository;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("autores")
+@SecurityRequirement(name = "bearer-key")
 public class AutorController {
     @Autowired
     private IAutorRepository autorRepository;

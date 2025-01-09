@@ -20,11 +20,13 @@ import br.com.helen.forumhub.domain.topicos.record.DadosAtualizacaoTopicos;
 import br.com.helen.forumhub.domain.topicos.record.DadosCadastrarTopicos;
 import br.com.helen.forumhub.domain.topicos.record.DadosDetalhamentoTopico;
 import br.com.helen.forumhub.repository.ITopicoRepository;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("topicos")
+@SecurityRequirement(name = "bearer-key")
 public class TopicoController {
 
     @Autowired

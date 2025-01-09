@@ -18,11 +18,13 @@ import br.com.helen.forumhub.domain.curso.Curso;
 import br.com.helen.forumhub.domain.curso.record.DadosCadastrarCurso;
 import br.com.helen.forumhub.domain.curso.record.DadosDetalhamentoCurso;
 import br.com.helen.forumhub.repository.ICursoRepository;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("cursos")
+@SecurityRequirement(name = "bearer-key")
 public class CursoController {
     
     @Autowired

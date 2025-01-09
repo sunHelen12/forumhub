@@ -12,11 +12,13 @@ import br.com.helen.forumhub.domain.repostas.Resposta;
 import br.com.helen.forumhub.domain.repostas.record.DadosCadastrarRespostas;
 import br.com.helen.forumhub.domain.repostas.record.DadosDetalhamentoRespostas;
 import br.com.helen.forumhub.repository.IRespostaRepository;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("respostas")
+@SecurityRequirement(name = "bearer-key")
 public class RespostaController {
 
     @Autowired
