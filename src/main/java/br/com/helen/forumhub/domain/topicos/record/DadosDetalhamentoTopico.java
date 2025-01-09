@@ -9,18 +9,18 @@ import br.com.helen.forumhub.domain.repostas.record.DadosDetalhamentoRespostas;
 import br.com.helen.forumhub.domain.topicos.Status;
 import br.com.helen.forumhub.domain.topicos.Topico;
 
-public record DadosDetalhamentoTopico(Long id,
-                                    Autor autor,
+public record DadosDetalhamentoTopico(Long id,                                    
                                     String titulo,
                                     String mensagem,
                                     Status status,
-                                    Curso curso,
                                     LocalDateTime dataCriacao,
+                                    Autor autor,
+                                    Curso curso,                                    
                                     List<DadosDetalhamentoRespostas>respostas) {
 
 
     public DadosDetalhamentoTopico(Topico topico){
-        this(topico.getId(), topico.getAutor(), topico.getTitulo(), topico.getMensagem(), topico.getStatus(), topico.getCurso(),topico.getDataCriacao(), 
+        this(topico.getId(), topico.getTitulo(), topico.getMensagem(), topico.getStatus(), topico.getDataCriacao(), topico.getAutor(), topico.getCurso(), 
         topico.getRespostas().stream().map(DadosDetalhamentoRespostas::new).toList()
         );
     }
